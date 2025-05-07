@@ -26,26 +26,24 @@ public class TextModifier {
     }
 
     public void addText(String filePath) {
-        //boolean stopped = false;
         System.out.println("If you wish to end this type : FINISHED");
-        while(true){
+        while (true) {
             try {
                 System.out.print("Text to Add : ");
-                String uString = "";
-                FileWriter writer = new FileWriter(filePath);
-                uString = input.nextLine();
-                if(uString.equals("FINISHED")){
+                String uString = input.nextLine();
+                if (uString.equals("FINISHED")) {
                     System.out.println("Typing process aborted. Exiting now.");
                     break;
                 }
-                writer.write(uString); //the user's string...
+                FileWriter writer = new FileWriter(filePath, true); // append mode
+                writer.write(uString);
                 writer.close();
             } catch (IOException e) {
                 System.out.println("Error writing to file: " + e.getMessage());
             }
         }
     }
-
+    
     public void deleteText(String filePath){
         try {
             new FileWriter(filePath, false).close(); // false = overwrite mode
