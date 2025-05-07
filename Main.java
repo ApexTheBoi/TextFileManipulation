@@ -20,8 +20,7 @@ public class Main {
                     case 1 -> T.addText(filePath);
                     case 2 -> T.readFile(file);
                     case 3 -> T.deleteText(filePath);
-                    default -> {
-                    }
+                    default -> System.out.println("Nice try, bud.");
                 }
             } 
             catch (Exception e) {
