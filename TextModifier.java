@@ -14,11 +14,17 @@ public class TextModifier {
     public void readFile(File file){
         try {
             output = new Scanner(file);
-            while (output.hasNextLine()){
-                System.out.print(output.nextLine() + " ");
+            if(!output.hasNextLine()){
+                System.out.println("SYSTEM : This file has no content.");
             }
+            else{
+                while (output.hasNextLine()){
+                    System.out.print(output.nextLine() + " ");
+                }
+                System.out.println();
+            }
+            
             output.close();
-            System.out.println("\nCode successfully executed.");
         } 
         catch (FileNotFoundException e) {
             System.out.println("Your file was not found. \nERROR: " + e );
@@ -36,7 +42,7 @@ public class TextModifier {
                     break;
                 }
                 FileWriter writer = new FileWriter(filePath, true); // append mode
-                writer.write(uString);
+                writer.write(uString + System.lineSeparator());
                 writer.close();
             } catch (IOException e) {
                 System.out.println("Error writing to file: " + e.getMessage());
